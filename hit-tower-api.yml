@@ -1,0 +1,10 @@
+---
+- name: Check Hashicorp Vault values
+  hosts: all
+  vars:
+    - key_data: "{{ lookup('hashi_vault', 'secret=secret/data/tower:')}}"
+
+  tasks:
+  - name: check tower values for admin_pw
+    debug:
+      msg: "Tower admin password is: {{ key_data|json_query('data.admin_pw') }}"

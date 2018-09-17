@@ -7,4 +7,17 @@
   tasks:
   - name: check tower values for admin_pw
     debug:
-      msg: "Tower admin password is: {{ key_data|json_query('data.admin_pw') }}"
+      msg: "Tower admin password retrieved from HashiCorp Vault is: {{ key_data|json_query('data.admin_pw') }}"
+
+  - name: get info about "Vagrant" inventory
+    uri:
+      url: https://localhost/api/v2/inventories/2/
+      method: GET
+      user: admin
+      password: "{{ key_data | json_query('data.admin_pw') }}"
+      force_basic_auth: True
+    register: tower_api_inventory
+
+  - name: print results to stdout
+    debug:
+      var: tower_api_inventory

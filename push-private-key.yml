@@ -5,10 +5,6 @@
     - key_data: "{{ lookup('hashi_vault', 'secret=secret/data/vagrant:') }}"
 
   tasks:
-  - name: check tower values for vagrant_priv_key
-    debug:
-      msg: "Private key retrieved from HashiCorp Vault is: {{ key_data | json_query('data.vagrant_priv_key') }}"
-
   - name: copy private key to target hosts
     copy:
       dest: /tmp/private_key

@@ -6,12 +6,12 @@ https://www.ansible.com/blog/ansible-tower-feature-spotlight-custom-credentials[
 
 == Requirements
 
-. Vagrant 2.1.1
+. Vagrant 2.1.5
 . `vagrant plugin install vagrant-hostmanager`
-. Download Vault 0.10.1 from the https://www.vaultproject.io/downloads.html[download page]
+. Download Vault 0.11.1 from the https://www.vaultproject.io/downloads.html[download page]
 to the git project directory
 
-The Ansible Tower Vagrant Box 3.2.5 with Ansible 2.5.2 was used to create this demo.
+The Ansible Tower Vagrant Box 3.3.0 with Ansible 2.6.3 was used to create this demo.
 
 == Install and Start Hashicorp Vault
 

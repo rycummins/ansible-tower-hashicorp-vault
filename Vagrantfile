@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     tower.vm.box = "ansible/tower"
 
     tower.vm.provider "virtualbox" do |vb|
-      vb.memory = 1024
+      vb.memory = 2048
       vb.cpus = 2
     end
 

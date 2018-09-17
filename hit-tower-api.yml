@@ -2,12 +2,12 @@
 - name: Check Hashicorp Vault values
   hosts: all
   vars:
-    - key_data: "{{ lookup('hashi_vault', 'secret=secret/data/tower:')}}"
+    - key_data: "{{ lookup('hashi_vault', 'secret=secret/data/tower:') }}"
 
   tasks:
   - name: check tower values for admin_pw
     debug:
-      msg: "Tower admin password retrieved from HashiCorp Vault is: {{ key_data|json_query('data.admin_pw') }}"
+      msg: "Tower admin password retrieved from HashiCorp Vault is: {{ key_data | json_query('data.admin_pw') }}"
 
   - name: get info about "Vagrant" inventory
     uri:
@@ -16,6 +16,7 @@
       user: admin
       password: "{{ key_data | json_query('data.admin_pw') }}"
       force_basic_auth: True
+      validate_certs: False
     register: tower_api_inventory
 
   - name: print results to stdout
